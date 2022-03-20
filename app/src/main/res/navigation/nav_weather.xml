@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/nav_weather"
+    app:startDestination="@id/mainWeather">
+
+    <fragment
+        android:id="@+id/mainWeather"
+        android:name="com.example.weatherapplication.views.MainWeather"
+        android:label="fragment_main_weather"
+        tools:layout="@layout/fragment_main_weather" >
+        <action
+            android:id="@+id/action_mainWeather_to_listWeather"
+            app:destination="@id/listWeather" />
+    </fragment>
+    <fragment
+        android:id="@+id/listWeather"
+        android:name="com.example.weatherapplication.views.ListWeather"
+        android:label="fragment_list_weather"
+        tools:layout="@layout/fragment_list_weather" >
+        <action
+            android:id="@+id/action_listWeather_to_infoWeather"
+            app:destination="@id/infoWeather" />
+        <action
+            android:id="@+id/action_listWeather_to_mainWeather"
+            app:destination="@id/mainWeather" />
+    </fragment>
+    <fragment
+        android:id="@+id/infoWeather"
+        android:name="com.example.weatherapplication.views.InfoWeather"
+        android:label="fragment_info_weather"
+        tools:layout="@layout/fragment_info_weather" >
+        <action
+            android:id="@+id/action_infoWeather_to_listWeather"
+            app:destination="@id/listWeather" />
+    </fragment>
+</navigation>

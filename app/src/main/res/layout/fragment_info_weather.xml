@@ -1,0 +1,71 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <data>
+        <variable
+            name="temperature"
+            type="String" />
+        <variable
+            name="howitfeels"
+            type="String" />
+        <variable
+            name="weather"
+            type="String" />
+        <variable
+            name="description"
+            type="String" />
+
+    </data>
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        tools:context=".views.InfoWeather">
+
+        <TextView
+            android:id="@+id/temperatureV"
+            android:layout_width="110dp"
+            android:layout_height="77dp"
+            android:layout_marginTop="120dp"
+            android:layout_marginEnd="88dp"
+            android:text="@{temperature}"
+            android:textAlignment="center"
+            android:textSize="28sp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <TextView
+            android:id="@+id/howitfeelsV"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="28dp"
+            android:layout_marginEnd="88dp"
+            android:text="@{howitfeels}"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/temperatureV" />
+
+        <TextView
+            android:id="@+id/weatherV"
+            android:layout_width="97dp"
+            android:layout_height="36dp"
+            android:layout_marginStart="56dp"
+            android:layout_marginBottom="20dp"
+            android:text="@{weather}"
+            android:textSize="20sp"
+            app:layout_constraintBottom_toTopOf="@+id/descriptionV"
+            app:layout_constraintStart_toStartOf="parent" />
+
+        <TextView
+            android:id="@+id/descriptionV"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="56dp"
+            android:layout_marginBottom="300dp"
+            android:text="@{description}"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintStart_toStartOf="parent" />
+    </androidx.constraintlayout.widget.ConstraintLayout>
+</layout>
