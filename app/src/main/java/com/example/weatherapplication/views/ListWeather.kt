@@ -7,6 +7,7 @@ import android.view.View
 import android.view.ViewGroup
 import android.widget.Toast
 import androidx.lifecycle.ViewModelProvider
+import androidx.recyclerview.widget.DividerItemDecoration
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.example.weatherapplication.R
@@ -26,9 +27,11 @@ class ListWeather : Fragment(), ListWeatherAdapter.OnItemClickListener {
     ): View {
         viewmodel = ViewModelProvider(requireActivity()).get(ViewModelWeather::class.java)
         myView = inflater.inflate(R.layout.fragment_list_weather, container, false)
+        val deco = DividerItemDecoration(context, DividerItemDecoration.VERTICAL)
         activity?.title = viewmodel.city.value
 
         viewInit()
+        myView.findViewById<RecyclerView>(R.id.listWeatherRV).addItemDecoration(deco)
         return myView
     }
 
