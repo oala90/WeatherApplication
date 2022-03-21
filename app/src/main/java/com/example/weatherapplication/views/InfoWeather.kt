@@ -9,7 +9,6 @@ import androidx.databinding.DataBindingUtil
 import androidx.lifecycle.ViewModelProvider
 import com.example.weatherapplication.R
 import com.example.weatherapplication.databinding.FragmentInfoWeatherBinding
-import com.example.weatherapplication.model.WeatherList
 import com.example.weatherapplication.viewmodel.ViewModelWeather
 
 class InfoWeather : Fragment() {
@@ -18,9 +17,9 @@ class InfoWeather : Fragment() {
         savedInstanceState: Bundle?
     ): View {
         val binding = DataBindingUtil.inflate<FragmentInfoWeatherBinding>(inflater, R.layout.fragment_info_weather, container, false)
-        val viewmodel = ViewModelProvider(requireActivity()).get(ViewModelWeather::class.java)
+        val viewmodel = ViewModelProvider(requireActivity())[ViewModelWeather::class.java]
+        activity?.title = viewmodel.city.value
 
-        //val item = arguments?.getParcelable<WeatherList>("item")
         val item = viewmodel.itemResponse.value
         binding.temperature = item?.main?.temp.toString()
         binding.howitfeels = item?.main?.feels_like.toString()

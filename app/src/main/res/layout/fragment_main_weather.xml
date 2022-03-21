@@ -22,10 +22,11 @@
             android:hint="@string/addCity"
             android:inputType="text"
             android:text="@={myviewmodel.city}"
+            android:maxLength="100"
             android:textAlignment="center"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent"
-            tools:ignore="TouchTargetSizeCheck,SpeakableTextPresentCheck" />
+            tools:ignore="TouchTargetSizeCheck,SpeakableTextPresentCheck"/>
 
         <Button
             android:id="@+id/searchB"

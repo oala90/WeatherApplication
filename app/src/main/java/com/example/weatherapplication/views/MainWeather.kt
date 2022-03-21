@@ -1,12 +1,12 @@
 package com.example.weatherapplication.views
 
 import android.os.Bundle
-import android.util.Log
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.Button
+import android.widget.Toast
 import androidx.databinding.DataBindingUtil
 import androidx.lifecycle.ViewModelProvider
 import com.example.weatherapplication.R
@@ -25,20 +25,26 @@ class MainWeather : Fragment() {
     ): View {
         binding = DataBindingUtil.inflate(inflater, R.layout.fragment_main_weather, container, false)
         viewmodel = ViewModelProvider(requireActivity())[ViewModelWeather::class.java]
+        activity?.title = "Weather App"
 
         binding.lifecycleOwner = this
         binding.myviewmodel = viewmodel
 
         val button = binding.root.findViewById<Button>(R.id.searchB)
 
-
         button.setOnClickListener{
             viewmodel.callAPI()
+            viewmodel.myResponse.value
+
             viewmodel.isBusy.observe(viewLifecycleOwner) {
                 if(it==false) {
-                    activity?.supportFragmentManager?.beginTransaction()
-                        ?.replace(R.id.weatherFragment, ListWeather())
-                        ?.addToBackStack(null)?.commit()
+                    if(viewmodel.code.value?.toInt() == 200){
+                        activity?.supportFragmentManager?.beginTransaction()
+                            ?.replace(R.id.weatherFragment, ListWeather())
+                            ?.addToBackStack(null)?.commit()
+                    }else{
+                        Toast.makeText(activity, "City Not Found", Toast.LENGTH_SHORT).show()
+                    }
                 }
             }
         }

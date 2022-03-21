@@ -1,13 +1,11 @@
 package com.example.weatherapplication.adapters
 
-import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
 import com.example.weatherapplication.R
-import com.example.weatherapplication.model.ModelWeather
 import com.example.weatherapplication.model.WeatherList
 
 class ListWeatherAdapter (private var items: List<WeatherList>, private var listener1: OnItemClickListener) : RecyclerView.Adapter<ListWeatherAdapter.ViewHolder>() {
