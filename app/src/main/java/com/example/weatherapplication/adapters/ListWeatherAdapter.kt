@@ -36,8 +36,8 @@ class ListWeatherAdapter (private var items: List<WeatherList>, private var list
 
     override fun onBindViewHolder(holder: ViewHolder, position: Int) {
         val item = items[position]
-        holder.weather.text = item.weather?.firstOrNull()?.main
-        holder.temperature.text = item.main?.temp.toString()
+        holder.weather.text = item.weather.firstOrNull()?.main
+        holder.temperature.text = item.main.temp.toString()
     }
 
     override fun getItemCount() = items.size

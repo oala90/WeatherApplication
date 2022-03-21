@@ -27,11 +27,11 @@ class ListWeather : Fragment(), ListWeatherAdapter.OnItemClickListener {
     ): View {
         viewmodel = ViewModelProvider(requireActivity()).get(ViewModelWeather::class.java)
         myView = inflater.inflate(R.layout.fragment_list_weather, container, false)
-        val deco = DividerItemDecoration(context, DividerItemDecoration.VERTICAL)
+        val decorationLine = DividerItemDecoration(context, DividerItemDecoration.VERTICAL)
         activity?.title = viewmodel.city.value
 
         viewInit()
-        myView.findViewById<RecyclerView>(R.id.listWeatherRV).addItemDecoration(deco)
+        myView.findViewById<RecyclerView>(R.id.listWeatherRV).addItemDecoration(decorationLine)
         return myView
     }
 
@@ -42,8 +42,8 @@ class ListWeather : Fragment(), ListWeatherAdapter.OnItemClickListener {
             arr.clear()
             arr.addAll(0, it) }
 
-        val myadapter =   ListWeatherAdapter(arr, this)
-        listRVWeather.adapter = myadapter
+        val myAdapter =   ListWeatherAdapter(arr, this)
+        listRVWeather.adapter = myAdapter
     }
 
     override fun onItemClick(item: WeatherList) {

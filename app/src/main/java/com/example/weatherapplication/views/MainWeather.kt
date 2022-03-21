@@ -13,7 +13,6 @@ import com.example.weatherapplication.R
 import com.example.weatherapplication.databinding.FragmentMainWeatherBinding
 import com.example.weatherapplication.viewmodel.ViewModelWeather
 
-
 class MainWeather : Fragment() {
 
     private lateinit var binding: FragmentMainWeatherBinding
