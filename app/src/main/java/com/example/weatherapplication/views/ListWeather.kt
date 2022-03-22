@@ -17,7 +17,7 @@ import com.example.weatherapplication.viewmodel.ViewModelWeather
 
 class ListWeather : Fragment(), ListWeatherAdapter.OnItemClickListener {
 
-    var arr = mutableListOf<WeatherList>()
+    private var arr = mutableListOf<WeatherList>()
     private lateinit var viewmodel: ViewModelWeather
     private lateinit var myView: View
 

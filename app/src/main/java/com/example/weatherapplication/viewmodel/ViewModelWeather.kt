@@ -14,19 +14,22 @@ import kotlinx.coroutines.withContext
 
 class ViewModelWeather: ViewModel() {
 
-    var city = MutableLiveData("")
-    var id = apiID
-    var unit = units
-    var myResponse: MutableLiveData<WeatherModel?> = MutableLiveData()
-    val objWeather = WeatherService()
-    var itemResponse: MutableLiveData<WeatherList> = MutableLiveData()
-    var code = MutableLiveData(0)
-    var isBusy = MutableLiveData(false)
+    private var _city = MutableLiveData("")
+    val city = _city
+    private var _myResponse: MutableLiveData<WeatherModel?> = MutableLiveData()
+    val myResponse = _myResponse
+    private val objWeather = WeatherService()
+    private var _itemResponse: MutableLiveData<WeatherList> = MutableLiveData()
+    val itemResponse = _itemResponse
+    private var _code = MutableLiveData(0)
+    val code = _code
+    private var _isBusy = MutableLiveData(false)
+    val isBusy = _isBusy
 
     fun callAPI(){
         isBusy.value=true
         viewModelScope.launch(Dispatchers.IO) {
-            val response = objWeather.getWeather(city.value,unit,id)
+            val response = objWeather.getWeather(city.value,units,apiID)
             withContext(Dispatchers.Main){
                 myResponse.value = response
                 code.value = myResponse.value?.cod?.toInt()

@@ -16,28 +16,28 @@ import com.example.weatherapplication.viewmodel.ViewModelWeather
 class MainWeather : Fragment() {
 
     private lateinit var binding: FragmentMainWeatherBinding
-    private lateinit var viewmodel: ViewModelWeather
+    private lateinit var viewModel: ViewModelWeather
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View {
         binding = DataBindingUtil.inflate(inflater, R.layout.fragment_main_weather, container, false)
-        viewmodel = ViewModelProvider(requireActivity())[ViewModelWeather::class.java]
+        viewModel = ViewModelProvider(requireActivity())[ViewModelWeather::class.java]
         activity?.title = "Weather App"
 
         binding.lifecycleOwner = this
-        binding.myviewmodel = viewmodel
+        binding.myviewmodel = viewModel
 
         val button = binding.root.findViewById<Button>(R.id.searchB)
 
         button.setOnClickListener{
-            viewmodel.callAPI()
-            viewmodel.myResponse.value
+            viewModel.callAPI()
+            viewModel.myResponse.value
 
-            viewmodel.isBusy.observe(viewLifecycleOwner) {
+            viewModel.isBusy.observe(viewLifecycleOwner) {
                 if(it==false) {
-                    if(viewmodel.code.value?.toInt() == 200){
+                    if(viewModel.code.value?.toInt() == 200){
                         activity?.supportFragmentManager?.beginTransaction()
                             ?.replace(R.id.weatherFragment, ListWeather())
                             ?.addToBackStack(null)?.commit()
