@@ -17,10 +17,10 @@ class InfoWeather : Fragment() {
         savedInstanceState: Bundle?
     ): View {
         val binding = DataBindingUtil.inflate<FragmentInfoWeatherBinding>(inflater, R.layout.fragment_info_weather, container, false)
-        val viewmodel = ViewModelProvider(requireActivity())[ViewModelWeather::class.java]
-        activity?.title = viewmodel.city.value
+        val viewModel = ViewModelProvider(requireActivity())[ViewModelWeather::class.java]
+        activity?.title = viewModel.city.value
 
-        val item = viewmodel.itemResponse.value
+        val item = viewModel.itemResponse.value
         binding.temperature = item?.main?.temp.toString()
         binding.howitfeels = item?.main?.feels_like.toString()
         binding.weather = item?.weather?.firstOrNull()?.main.toString()
