@@ -1,10 +1,10 @@
 package com.example.weatherapplication.viewmodel
 
+import com.example.weatherapplication.BuildConfig
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import com.example.weatherapplication.repository.WeatherService
-import com.example.weatherapplication.constants.Constants.Companion.apiID
 import com.example.weatherapplication.constants.Constants.Companion.units
 import com.example.weatherapplication.model.WeatherList
 import com.example.weatherapplication.model.WeatherModel
@@ -29,7 +29,7 @@ class ViewModelWeather: ViewModel() {
     fun callAPI(){
         isBusy.value=true
         viewModelScope.launch(Dispatchers.IO) {
-            val response = objWeather.getWeather(city.value,units,apiID)
+            val response = objWeather.getWeather(city.value,units, BuildConfig.API_KEY)
             withContext(Dispatchers.Main){
                 myResponse.value = response
                 code.value = myResponse.value?.cod?.toInt()

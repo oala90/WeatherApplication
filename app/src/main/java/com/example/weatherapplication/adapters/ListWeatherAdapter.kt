@@ -8,7 +8,7 @@ import androidx.recyclerview.widget.RecyclerView
 import com.example.weatherapplication.R
 import com.example.weatherapplication.model.WeatherList
 
-class ListWeatherAdapter (private var items: List<WeatherList>, private var listener1: OnItemClickListener) : RecyclerView.Adapter<ListWeatherAdapter.ViewHolder>() {
+class ListWeatherAdapter (private var items: List<WeatherList>, private var listener: OnItemClickListener) : RecyclerView.Adapter<ListWeatherAdapter.ViewHolder>() {
 
     inner class ViewHolder (view: View) : RecyclerView.ViewHolder(view), View.OnClickListener {
         val weather: TextView = view.findViewById(R.id.vWeather)
@@ -20,7 +20,7 @@ class ListWeatherAdapter (private var items: List<WeatherList>, private var list
 
         override fun onClick(v: View) {
             if ( layoutPosition != RecyclerView.NO_POSITION) {
-                listener1.onItemClick(items[adapterPosition])
+                listener.onItemClick(items[adapterPosition])
             }
         }
     }

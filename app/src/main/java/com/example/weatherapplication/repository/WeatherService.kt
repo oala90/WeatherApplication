@@ -5,6 +5,7 @@ import com.example.weatherapplication.interfaces.APIService
 import com.example.weatherapplication.model.WeatherModel
 import retrofit2.Retrofit
 import retrofit2.converter.gson.GsonConverterFactory
+
 class WeatherService{
     private val retrofit = Retrofit.Builder()
         .baseUrl(Constants.urlAPI)
